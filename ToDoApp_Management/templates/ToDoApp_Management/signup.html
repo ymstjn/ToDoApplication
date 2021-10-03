@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ToDoAppに新規登録</title>
+    <!-- viewport meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'ToDoApp_Management/css/entrance.css' %}">
+  </head>
+  <body>
+    <div class="firm">
+      yama Co.
+    </div>
+    <div class="hr_border"></div>
+    {% if errorCheck %}
+    <div class="error_check">このユーザ名は既に使用されています。</div>
+    {% endif %}
+    <div class="container">
+      <div class="item">
+        <p>ToDoAppに登録する</p>
+        <form action="{% url 'signup' %}" method="POST">{% csrf_token %}
+          <div><input type="text" name="username" placeholder="ユーザ名" class="ipt"></div>
+          <div><input type="password" name="password" placeholder="パスワード" class="ipt"></div>
+          <div><input type="submit" value="ユーザー登録" class="sbm"></div>
+        </form>
+      </div>
+    </div>
+    <div class="url"><a href="{% url 'login' %}">既に登録している方はこちらから</a></div>
+  </body>
+</html>

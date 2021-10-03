@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static%}
+{% load widget_tweaks %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Categoryを追加</title>
+    <!-- viewport meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'ToDoApp_Management/css/addcategory.css' %}">
+  </head>
+  <body>
+    <div class="firm">
+      yama Co.
+    </div>
+    <div class="hr_border"></div>
+    <div class="act_url">
+      <div><a href="{% url 'todolist' %}" class="menu_button add_todo">ToDo一覧へ</a></div>
+      <div><a href="{% url 'addtodo' %}" class="menu_button add_category">ToDoを追加</a></div>
+      <div><a href="{% url 'logout' %}" class="menu_button logout">ログアウト</a></div>
+    </div>
+    <div class="ttl">Categoryを追加する</div>
+    <div class="tp_cont">
+    <form action="{% url 'addcategory' %}" method="POST">{% csrf_token %}
+        <div class="dispname f">Category</div>
+        <div>{{ form.category |add_class:"content_form" }}</div>
+        <div><input type="submit" value="追加する" class="upd_button"></div>
+    </form>
+    </div>
+    <div class="bt_cont">
+        {% for item in data %}
+        <div class="bt_cont1">
+          <div>{{ item }}</div>
+          <div><a href="{% url 'updatecategory' item.id %}" class="button update">更新</a></div>
+          <div><a href="{% url 'deletecategory' item.id %}" class="button delete">削除</a></div>
+        </div>
+        {% endfor %}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,252 @@
+/* 変数名を定義（利用時は、var(変数名)） */
+:root {
+    --black: rgb(70,70,70);
+    --gray: rgb(240,240,240);
+}
+
+body{
+    margin: 0;
+    font-family: sans-serif;
+}
+
+/* 会社ロゴ */
+.firm{
+    height: 70px;
+    padding-left: 2%;
+
+    display: flex;
+    align-items: center;
+
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--black);
+}
+
+/* ボーダー線 */
+.hr_border{
+    border-bottom: 2.5px var(--black) solid;
+}
+
+/* 移動URL */
+.act_url{
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    display: flex;
+}
+
+.act_url>div:nth-child(2){
+    /* ToDoとCategoryボタンの間隔 */
+    margin-left: 20px;
+}
+
+.act_url>div:nth-child(3){
+    /* ToDoとCategoryボタンの間隔 */
+    margin-left: auto;
+}
+
+.logout{
+    background-color: blueviolet;
+}
+
+.menu_button{
+    font-size: 16px;
+    font-weight: bold;
+
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 4px;
+    text-align: center;
+    padding: 16px 16px;
+
+    color: white;
+    line-height: 1em;
+}
+
+.add_todo{
+    background-color: blue;
+    transition: 0.8s;
+}
+
+.add_todo:hover{
+    background-color: rgb(0, 0, 150);
+}
+
+.add_category{
+    background-color: green;
+    transition: 0.8s;
+}
+
+.add_category:hover{
+    background-color: rgb(0, 100, 0);
+}
+
+
+/* ヘッダー */
+.ttl, .tp_cont{
+    width: 500px;
+    margin: auto;
+}
+
+.ttl{
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--black);
+}
+
+.tp_cont{
+    border-radius: 8px;
+    background-color: cadetblue;
+}
+
+.tp_cont>form>div{
+    width: 450px;
+    margin: 0 auto;
+}
+
+.tp_cont>form>div:last-child{
+    margin-top: 20px;
+    padding-bottom: 20px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.dispname{
+    font-size: 20px;
+    color: white;
+
+    padding-top: 10px;
+}
+
+.f{
+    padding-top: 20px;
+}
+
+/* div, p{
+    border: 2px solid rgba(143, 144, 235, 0.801);
+} */
+
+/* formのclass */
+.content_form{
+    padding-left: 10px;
+    font-size: 20px;
+
+    width: 440px;
+    height: 40px;
+}
+
+.category_form{
+    font-size: 16px;
+}
+
+.priority_form{
+    font-size: 16px;
+}
+
+.progress_form{
+    font-size: 16px;
+}
+
+.pub_data_form{
+    font-size: 16px;
+}
+
+.button{
+    width: 100px;
+    height: 40px;
+
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+
+    background-color: blue;
+    
+    border-radius: 4px;
+    border: 2px solid blue;
+
+    transition: 0.8s;
+}
+
+.button:hover{
+    cursor: pointer;
+    cursor: hand;
+
+    background-color: rgb(0, 0, 200);
+    border: 2px solid rgb(0, 0, 200);
+}
+
+@media screen and (max-width: 600px){
+    .firm{
+        height: 40px;
+        font-size: 14px;
+    }
+
+    .menu_button{
+        font-size: 12px;
+        border-radius: 4px;
+        padding: 12px 12px;
+    }
+
+    .ttl, .tp_cont{
+        width: 300px;
+        margin: auto;
+    }
+
+    .ttl{
+        font-size: 16px;
+        font-weight: bold;
+        color: var(--black);
+    }
+
+    .content_form{
+        padding-left: 5px;
+        font-size: 12px;
+        width: 235px;
+        height: 20px;
+    }
+
+    .dispname{
+        font-size: 12px;
+        color: white;
+        padding-top: 0;
+    }
+
+    .f{
+        padding-top: 5px;
+    }
+
+    .tp_cont>form>div{
+        width: 250px;
+        margin: 0 auto;
+    }
+
+    .category_form{
+        font-size: 12px;
+    }
+    
+    .priority_form{
+        font-size: 12px;
+    }
+    
+    .progress_form{
+        font-size: 12px;
+    }
+    
+    .pub_data_form{
+        font-size: 12px;
+    }
+
+    .button{
+        width: 80px;
+        height: 30px;    
+        font-size: 14px;
+    }
+
+    .tp_cont>form>div:last-child{
+        margin-top: 10px;
+        padding-bottom: 10px;
+    }
+}

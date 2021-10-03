@@ -1,0 +1,170 @@
+/* 変数名を定義（利用時は、var(変数名)） */
+:root {
+    --black: rgb(70,70,70);
+    --gray: rgb(240,240,240);
+}
+
+/*
+div{
+    border: 2px solid red;
+}
+*/
+
+body{
+    margin: 0;
+    font-family: sans-serif;
+}
+
+/* 会社ロゴ */
+.firm{
+    height: 70px;
+    padding-left: 2%;
+
+    display: flex;
+    align-items: center;
+
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--black);
+}
+
+/* ボーダー線 */
+.hr_border{
+    border-bottom: 2.5px var(--black) solid;
+}
+
+.error_check
+{
+    text-align: center;
+    color: red;
+    padding-top: 40px;
+    margin-bottom: -40px;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+/* 入力フォームのボックス */
+.item{
+    width: 400px;
+    margin-top: 70px;
+    padding: 20px;
+    background-color: var(--gray);
+}
+
+/* サインアップ・ログインの文字 */
+.item>p{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--black);
+}
+
+/* form同士の間隔 */
+form>div{
+    margin: 20px 0;
+    text-align: center;
+}
+
+.ipt{
+    height: 35px;
+    width: 320px;
+
+    border: 1.2px solid var(--black); 
+    box-sizing: border-box;
+    border-radius: 0.2em;
+
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.sbm{
+    height: 40px;
+    width: 320px;
+    
+    margin-top: 10px;
+
+    border: 0.5px solid blue; 
+    border-radius: 0.2em;
+    
+    background-color: blue;
+    color: white;
+
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.sbm:hover{
+    border: 0.5px solid rgb(0, 0, 200); 
+    background-color: rgb(0, 0, 200);
+
+    cursor: pointer;
+    cursor: hand;
+}
+
+.url{
+    padding-top: 20px;
+    text-align: center;
+}
+
+@media screen and (max-width: 600px){
+    .firm{
+        height: 40px;
+        font-size: 14px;
+    }
+
+    /* 入力フォームのボックス */
+    .item{
+        width: 300px;
+        margin-top: 70px;
+        padding: 20px;
+        background-color: var(--gray);
+    }
+
+    .item>p{
+        font-size: 20px;
+    }
+
+    /* form同士の間隔 */
+    form>div{
+        margin: 10px 0;
+    }
+    
+    .ipt{
+        height: 30px;
+        width: 250px;
+
+        border: 1.2px solid var(--black); 
+        box-sizing: border-box;
+        border-radius: 0.2em;
+
+        padding-left: 10px;
+        font-size: 15px;
+    }
+
+    .sbm{
+        height: 30px;
+        width: 250px;
+        
+        margin-top: 10px;
+    
+        border: 0.5px solid blue; 
+        border-radius: 0.2em;
+        
+        background-color: blue;
+        color: white;
+    
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .error_check
+    {
+        text-align: center;
+        color: red;
+        padding-top: 20px;
+        margin-bottom: -45px;
+    }
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+{% load static%}
+{% load widget_tweaks %}
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>ToDo一覧</title>
+
+  <!-- viewport meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- css file -->
+  <link rel="stylesheet" type="text/css" href="{% static 'ToDoApp_Management/css/list.css' %}">
+  
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+  </script>
+  <script src="{% static 'ToDoApp_Management/js/list.js' %}"></script>
+</head>
+<body>
+    <div class="firm">
+      yama Co.
+    </div>
+    <div class="hr_border"></div>
+    <div class="act_url">
+      <div><a href="{% url 'addtodo' %}" class="menu_button add_todo">ToDoを追加</a></div>
+      <div><a href="{% url 'addcategory' %}" class="menu_button add_category">Categoryを追加</a></div>
+      <div><a href="{% url 'logout' %}" class="menu_button logout">ログアウト</a></div>
+    </div>
+    <div class="ord_cont">    
+    <form action="{% url 'orderby' %}" method="POST">{% csrf_token %}
+      <div class="ord_cont1">
+        <div>{{ form.order|add_class:"order_form" }}</div>
+        <div><input type="submit" value="並び替え" class="ord_button"></div>
+      </div>
+    </form>
+    </div>
+    <!-- 箱を3作る。まだ始めてないもの。途中経過。終了したもの。 -->
+    <div class="hd_cont">
+      <div class="hd_cont1"><p class="hd_inco">未着手</p></div>
+      <div class="hd_cont1"><p class="hd_init">着手中</p></div>
+      <div class="hd_cont1"><p class="hd_comp">完了</p></div>
+    </div>
+
+    <div class="tp_cont">
+      <!-- 進捗度：0% -->
+      <div class="tp_cont1">
+        {% for item in data_sta %}
+        <div class="tp_cont2 {% if item.priority == 'important' %} important {% else %} normal {% endif %}">
+          <div class="cntnt">{{ item.content }}</div>
+          {% if item.category != None %}
+          <div class="ctg"><div>{{ item.category }}</div></div>
+          {% else %}
+          <div class="no_ctg"></div>
+          {% endif %}
+          <div>{{ item.pub_date| date:"Y-m-d" }}</div>
+          <div class="pgr">
+            <div class="pgr_border"></div>
+          </div>
+          <div class="cud_url">
+            <div class="cud_cmp"><a href="{% url 'completetodo' item.id %}" class="button complete">完了</a></div>
+            <div class="cud_upd"><a href="{% url 'updatetodo' item.id %}" class="button update">編集</a></div>
+            <div class="cud_dlt"><a href="{% url 'deletetodo' item.id %}" class="button delete">削除</a></div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <!-- 進捗度：25% ~ 75% -->
+      <div class="tp_cont1">
+        {% for item in data_ini %}
+        <div class="tp_cont2 {% if item.priority == 'important' %} important {% else %} normal {% endif %}">
+          <div class="cntnt">{{ item.content }}</div>
+          {% if item.category != None %}
+          <div class="ctg"><div>{{ item.category }}</div></div>
+          {% else %}
+          <div class="no_ctg"></div>
+          {% endif %}
+          <div>{{ item.pub_date| date:"Y-m-d" }}</div>
+          <div class="pgr">
+            <div class="pgr_border {% if item.progress == 'quarter' %} pgr_25 {% elif item.progress == 'half' %} pgr_50 {% else %} pgr_75 {% endif%}"></div>
+          </div>
+          <div class="cud_url">
+            <div class="cud_cmp"><a href="{% url 'completetodo' item.id %}" class="button complete">完了</a></div>
+            <div class="cud_upd"><a href="{% url 'updatetodo' item.id %}" class="button update">編集</a></div>
+            <div class="cud_dlt"><a href="{% url 'deletetodo' item.id %}" class="button delete">削除</a></div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <!-- 進捗度： 100% -->
+      <div class="tp_cont1">
+        {% for item in data_fin %}
+        <div class="tp_cont2 {% if item.priority == 'important' %} important {% else %} normal {% endif %}">
+          <div class="cntnt">{{ item.content }}</div>
+          {% if item.category != None %}
+          <div class="ctg"><div>{{ item.category }}</div></div>
+          {% else %}
+          <div class="no_ctg"></div>
+          {% endif %}
+          <div>{{ item.pub_date| date:"Y-m-d" }}</div>
+          <div class="pgr">
+            <div class="pgr_border pgr_100"></div>
+          </div>
+          <div class="cud_url">
+            <div class="cud_upd"><a href="{% url 'updatetodo' item.id %}" class="button update">編集</a></div>
+            <div class="cud_dlt"><a href="{% url 'deletetodo' item.id %}" class="button delete">削除</a></div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>
